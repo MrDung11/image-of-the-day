@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo ThymeLeaf</title>
+</head>
+<body>
+<a href="/create">123</a>
+<table border="1">
+    <tr>
+        <th>STT</th>
+        <th>Author</th>
+        <th>Comment</th>
+        <th>Like</th>
+    </tr>
+</table>
+<h1>*************************</h1>
+<img id="img-of-the-day">
+<script>
+    let query = 'https://api.nasa.gov/planetary/earth/assets?lon=100.75&lat=1.5&date=2014-02-01&dim=0.15&api_key=xYLlR03TnzTthYG4ZFtdgFeWyfE87dPzktYGRhJ2';
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function() {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+        }
+    };
+    request.send();
+</script>
+
+</body>
+</html>
